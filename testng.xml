@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Sauce Demo Automation Suite" verbose="1" parallel="methods" thread-count="2">
+
+    <test name="Login Module Tests">
+        <classes>
+            <!-- Add your test classes here when ready -->
+            <!-- <class name="tests.LoginTest"/> -->
+        </classes>
+    </test>
+
+    <!-- You can add more <test> blocks later -->
+    <!-- <test name="E-Commerce Workflow Tests"> ... </test> -->
+
+</suite>
