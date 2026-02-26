@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Parallel Cross-Browser (Chrome + Edge)" parallel="tests" thread-count="2">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- Chrome Test -->
+    <test name="Chrome Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.ECommerceWorkflowTest"/>
+        </classes>
+    </test>
+
+    <!-- Edge Test -->
+    <test name="Edge Test">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.ECommerceWorkflowTest"/>
+        </classes>
+    </test>
+
+</suite>

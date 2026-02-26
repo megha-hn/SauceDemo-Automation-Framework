@@ -1,24 +1,25 @@
 package base;
 
-import org.testng.annotations.*;
-import utils.DriverManager;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import utils.ConfigReader;
-import listeners.TestListener;
-import org.testng.ITestResult;
+import utils.DriverManager;
 
-@Listeners(TestListener.class)
 public class BaseTest {
 
+    @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    @Parameters("browser")
-    public void setUp(@Optional String browser) {
-        if (browser == null) browser = ConfigReader.getProperty("browser");
-        DriverManager.initDriver(browser);
+    public void setUp(@Optional("chrome") String browser) {
+        DriverManager.initializeDriver(browser);  // ← static call
         DriverManager.getDriver().get(ConfigReader.getProperty("url"));
+        System.out.println("===== TEST SETUP COMPLETE - Browser: " + browser + " | URL: " + ConfigReader.getProperty("url") + " =====");
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown(ITestResult result) {
-        DriverManager.quitDriver();
+    public void tearDown() {
+        DriverManager.quitDriver();  // ← static call
+        System.out.println("===== TEST TEARDOWN COMPLETE =====");
     }
 }

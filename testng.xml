@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="Sauce Demo Automation Suite" verbose="1" parallel="methods" thread-count="2">
-
-    <test name="Login Module Tests">
+<suite name="SauceDemo Advanced Framework">
+    <parameter name="browser" value="chrome"/>
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+    <test name="Login Module">
         <classes>
-            <!-- Add your test classes here when ready -->
-            <!-- <class name="tests.LoginTest"/> -->
+            <class name="tests.LoginTest"/>
         </classes>
     </test>
-
-    <!-- You can add more <test> blocks later -->
-    <!-- <test name="E-Commerce Workflow Tests"> ... </test> -->
-
+    <test name="E-Commerce Workflow">
+        <classes>
+            <class name="tests.ECommerceWorkflowTest"/>
+        </classes>
+    </test>
 </suite>

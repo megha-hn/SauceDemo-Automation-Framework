@@ -1,0 +1,13 @@
+{
+  "name": "sauce-demo-automation-framework",
+  "version": "1.0.0",
+  "description": "Selenium + API Testing Framework",
+  "scripts": {
+    "test:api": "newman run \"api.tests/postman/collections/Reqres.in API Automation - Advanced.postman_collection.json\" -e \"api.tests/postman/environments/Reqres-Environment.postman_environment.json\"",
+    "test:api:ci": "newman run \"api.tests/postman/collections/Reqres.in API Automation - Advanced.postman_collection.json\" -e \"api.tests/postman/environments/Reqres-Environment.postman_environment.json\" -r cli,htmlextra --reporter-htmlextra-export ./api.tests/newman/report.html"
+  },
+  "devDependencies": {
+    "newman": "^6.1.2",
+    "newman-reporter-htmlextra": "^1.5.0"
+  }
+}
