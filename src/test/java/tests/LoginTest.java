@@ -5,7 +5,14 @@ import base.BaseTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utils.DBUtils;
 import utils.ExcelUtils;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest {
@@ -30,5 +37,20 @@ public class LoginTest extends BaseTest {
             assertTrue(actualMsg.contains(expectedMessage), "Error message mismatch");
             System.out.println("INVALID/LOCKED USER SCENARIO HANDLED CORRECTLY");
         }
+    }
+
+    @DataProvider(name = "loginDataFromDB")
+    public Object[][] getLoginDataFromDB() throws SQLException {
+        ResultSet rs = DBUtils.executeQuery("SELECT username, password FROM users WHERE email LIKE '%@example.com%'");
+        List<Object[]> data = new ArrayList<>();
+        while (rs.next()) {
+            data.add(new Object[] { rs.getString("username"), rs.getString("password") });
+        }
+        return data.toArray(new Object[0][]);
+    }
+
+    @Test(dataProvider = "loginDataFromDB")
+    public void testLoginScenarios(String username, String password) {
+        // Your existing login test, using username and password from DB
     }
 }

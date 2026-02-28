@@ -5,48 +5,48 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverManager {
 
-    // ThreadLocal to give each thread its own WebDriver instance
+    // ThreadLocal ensures each parallel thread has its own WebDriver
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        return driverThreadLocal.get();
+        WebDriver driver = driverThreadLocal.get();
+        if (driver == null) {
+            throw new IllegalStateException("Driver not initialized for this thread. Call initializeDriver first.");
+        }
+        return driver;
     }
 
     public static void initializeDriver(String browser) {
-        if (driverThreadLocal.get() == null) {
-            WebDriver driver;
-
-            switch (browser.toLowerCase().trim()) {
-                case "firefox":
-                    driver = new FirefoxDriver();
-                    break;
-
-                case "edge":
-                    EdgeOptions edgeOptions = new EdgeOptions();
-                    edgeOptions.addArguments("--inprivate");         // Edge private mode
-                    edgeOptions.addArguments("--start-maximized");
-                    driver = new EdgeDriver(edgeOptions);
-                    break;
-
-                default:  // Chrome
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--incognito");
-                    chromeOptions.addArguments("--start-maximized");
-                    chromeOptions.addArguments("--remote-debugging-pipe");  // keep this from previous fix
-                    driver = new ChromeDriver(chromeOptions);
-                    break;
-            }
-
-            driver.manage().window().maximize();
-            driverThreadLocal.set(driver);
-
-            System.out.println("Driver initialized successfully for browser: " + browser
-                    + " in thread: " + Thread.currentThread().getName());
+        // Only initialize if not already done for this thread
+        if (driverThreadLocal.get() != null) {
+            return;
         }
+
+        WebDriver driver;
+
+        browser = browser.toLowerCase().trim();
+
+        if (browser.equals("edge")) {
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--inprivate");           // Private mode
+            options.addArguments("--start-maximized");
+            driver = new EdgeDriver(options);
+            System.out.println("EdgeDriver initialized (InPrivate mode) in thread: " + Thread.currentThread().getName());
+        } else {
+            // Default: Chrome
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
+            options.addArguments("--start-maximized");
+            options.addArguments("--remote-debugging-pipe"); // Helps avoid port/crash issues
+            driver = new ChromeDriver(options);
+            System.out.println("ChromeDriver initialized (Incognito mode) in thread: " + Thread.currentThread().getName());
+        }
+
+        driver.manage().window().maximize();
+        driverThreadLocal.set(driver);
     }
 
     public static void quitDriver() {
