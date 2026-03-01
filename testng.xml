@@ -4,6 +4,9 @@
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
+    <listeners>
+        <listener class-name="listeners.ExtentReporterNG"/>
+    </listeners>
     <test name="Login Module">
         <classes>
             <class name="tests.LoginTest"/>
