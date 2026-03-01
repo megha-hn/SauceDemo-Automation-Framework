@@ -1,58 +1,43 @@
-SauceDemo Automation Framework
-Project Overview
-This is an advanced QA automation framework for the SauceDemo e-commerce application. It demonstrates skills in Selenium (Java), TestNG, Page Object Model, data-driven testing (Excel + DB), API testing with Postman/Newman, performance testing with JMeter, and database validation with MySQL.
-Candidate: Meghana H N
-Position: Software Test Engineer
-Submission Date: February 2026
-Key Features Implemented
+# SauceDemo Automation Framework – QA Assignment Submission
 
-Manual test cases (15+ in Excel)
-UI automation with Selenium + TestNG + POM + Retry analyzer + Cross-browser parallel execution (Chrome/Edge)
-Data-driven from Excel + MySQL DB
-API testing (Postman collections + Newman CLI reports)
-Performance testing (JMeter load test for 50 users)
-Database validation (MySQL sandbox integration in 3 scenarios)
-Bug report (5 bugs documented)
-Test summary report
-Logging, screenshots on failure
+**Candidate:** Meghana H N  
+**Position:** Software Test Engineer  
+**Assignment:** Advanced QA Automation Assignment  
+**Submission Date:** March 01, 2026  
+**GitHub Repository:** https://github.com/yourusername/SauceDemo-Automation-Framework  
+(Replace with your actual repo URL)
 
-Prerequisites
+**Application Under Test:** [Sauce Demo](https://www.saucedemo.com)
 
-Java JDK 17+ (LTS recommended)
-Maven 3.8+
-Chrome/Edge browsers installed
-ChromeDriver/EdgeDriver (managed via WebDriverManager)
-MySQL 8+ (local )
-Postman/Newman for API (npm installed)
-JMeter 5.6+ for performance
-IntelliJ IDEA (or Eclipse) for development
+## Project Overview
 
-Setup Instructions
+This repository contains a complete end-to-end QA automation framework for the SauceDemo e-commerce application. It demonstrates advanced skills in:
 
-Clone the repository:textgit clone <your-github-repo-url>
-cd SauceDemo-Automation-Framework
-Install Maven dependencies:textmvn clean install
-Configure config.properties (src/test/resources):
-baseUrl = https://www.saucedemo.com
-DB details :textdb.url = jdbc:mysql://localhost:3306/saucedemo_db
-db.user = <your_username>
-db.pass = <your_password>
+- Manual test case design (15+ scenarios)
+- UI automation using Selenium (Java), TestNG, Page Object Model (POM), data-driven testing (Excel + MySQL)
+- API testing with Postman & Newman
+- Performance/load testing with JMeter
+- Database backend validation with MySQL (integrated in UI tests)
+- Bug reporting (5 documented bugs)
+- Test summary report
+- CI/CD pipeline with Jenkins (Freestyle + Pipeline as Code)
 
-Setup MySQL Database :
-local MySQL.
-Run the SQL scripts from docs/db-schema.sql to create Users, Orders, Products tables and insert sample data.
+All parts of the assignment are fully implemented and documented.
 
-For API :
-Install Newman: npm install -g newman
-Run: npm run test:api
+### Tech Stack
 
-For Performance :
-Launch JMeter: C:\Program Files\apache-jmeter-5.6.3\bin\jmeter.bat
-Open performance-tests\LoadTest.jmx
-Or CLI: jmeter -n -t performance-tests\LoadTest.jmx -l performance-tests\AggregateReport.jtl -e -o performance-tests\report-html
+- Language: Java 17 (LTS)
+- Test Framework: TestNG
+- UI Automation: Selenium WebDriver 4.16+
+- Build Tool: Maven
+- Reporting: Extent Reports, screenshots on failure
+- API Testing: Postman Collections + Newman CLI
+- Performance Testing: Apache JMeter 5.6+
+- Database: MySQL 8 (db4free.net sandbox)
+- CI/CD: Jenkins (Docker + Freestyle + Pipeline)
 
+## Folder Structure
 
-Folder Structure
 textSauceDemo-Automation-Framework/
 ├── src/
 │   ├── main/
@@ -72,17 +57,23 @@ textSauceDemo-Automation-Framework/
 │   └── newman/
 │       └── reports/                    ← newman-report.html
 ├── performance-tests/
-│   ├── LoadTest.jmx                    ← JMeter test plan
+│   ├── SauceDemoPerformance.jmx        ← JMeter test plan
 │   ├── PerformanceReport.html          ← Generated HTML report
-│   └── PerformanceAnalysis.docx        ← Analysis with bottlenecks/recommendations
+│   └── PerformanceTestAnalysis.docx    ← Analysis with bottlenecks/recommendations
 ├── reports/
 │   ├── extent/                         ← Extent HTML reports
 │   └── screenshots/                    ← Failure screenshots
-├── docs/
+├── test-artifacts/
 │   ├── ManualTestCases.xlsx            ← 15+ manual test cases
 │   ├── BugReport.docx                  ← 5 documented bugs
 │   ├── TestSummaryReport.docx          ← Execution stats, defects, risks
-│   └── db-schema.sql                   ← SQL for tables/data
+│   └── TestStratergyDocument.docx                  
+├── jenkin-setup/
+│   ├── extent-report.html              ← All test extent report with test pass/fail
+│   ├── ConsoleOutput.txt               ← Detailed output text
+│   ├── Jenkin_Setup_Documentation.docx ← Installation and deployment 
+│   └── SauceDemo Config - Jenkins.HTMI ← Jenkins job configuration
+├── jenkinsfile                         ← pipeline approach and script
 ├── pom.xml                             ← Maven dependencies
 ├── testng.xml                          ← Sequential suite
 ├── testng-parallel.xml                 ← Parallel cross-browser suite
@@ -90,71 +81,43 @@ textSauceDemo-Automation-Framework/
 ├── README.md                           ← This file
 └── .gitignore                          ← Ignore generated files
 How to Run Tests
-UI Tests 
 
-Sequential: mvn clean test -DsuiteXmlFile=testng.xml
-Parallel (Chrome + Edge): mvn clean test -DsuiteXmlFile=testng-parallel.xml
+## Setup & Run Instructions
 
-API Tests 
+### 1. Clone Repository
+```bash
+git clone https://github.com/megha-hn/SauceDemo-Automation-Framework.git
+cd SauceDemo-Automation-Framework
 
-Install deps: npm install
-Run: npm run test:api
-Report: Open api-tests/newman/reports/newman-report.html
+2. Install Dependencies
+mvn clean install
 
-Performance Tests
+3. Configure src/test/resources/config.properties
+propertiesbaseUrl=https://www.saucedemo.com
+browser=chrome
+db.url=jdbc:mysql://localhost:3306/saucedemo_db
+db.user=your_db_username
+db.pass=your_db_password
 
-GUI: Open LoadTest.jmx in JMeter → Run
-CLI: jmeter -n -t performance-tests/LoadTest.jmx -l performance-tests/AggregateReport.jtl -e -o performance-tests/report-html
-Analysis: See PerformanceAnalysis.docx
 
-Database Validation
+4. Database Setup
 
-Integrated in ECommerceWorkflowTest.java and LoginTest.java (fetched from MySQL)
-Run UI tests → DB checks happen automatically (user exists, order created, inventory updated)
+Use db4free.net (free) or local MySQL
+Run docs/db-schema.sql to create tables & insert sample data
+DB validation runs automatically in LoginTest and ECommerceWorkflowTest
 
-Manual Test Cases
-See docs/ManualTestCases.xlsx for 15+ cases covering:
+5. Run Tests Locally
 
-TC_001-TC_005: Login (valid, invalid, locked, empty fields)
-TC_006-TC_010: Products (listing, sorting, filter)
-TC_011-TC_013: Cart (add/remove, count update)
-TC_014-TC_017: Checkout (info, payment, confirmation, negative: empty cart)
+Sequential:mvn clean test -DsuiteXmlFile=testng.xml
+Parallel (Chrome + Edge):mvn clean test -DsuiteXmlFile=testng-parallel.xml
 
-UI Automation Framework
+6.API Tests:npm install
+npm run test:api
+7.Performance (JMeter CLI): jmeter -n -t C:\Users\megha\IdeaProjects\SauceDemo-Automation-Framework\performance-tests\SauceDemoPerformance.jmx -l  C:\Users\megha\IdeaProjects\SauceDemo-Automation-Framework\performance-tests/resultstree.jtl -e -o C:\Users\megha\IdeaProjects\SauceDemo-Automation-Framework\performance-tests\report-html
 
-POM with Page Factory
-Data-driven from Excel/DB
-Retry analyzer for flaky tests
-Parallel cross-browser
-Screenshots on failure
-Extent reports
+8.How to Run Jenkins in Docker 
+# Update WSL first (if prompted)
+wsl --update
 
-API Testing with Postman
-
-Collections for Reqres.in API (CRUD users)
-Environment variables
-Newman CLI for automated runs + HTML report
-
-Performance Testing with JMeter
-
-LoadTest.jmx: 50 users, 10s ramp-up, 5 iterations, 2 min duration
-Samplers: Login, Product Listing, Add to Cart
-Metrics: Avg response time, 90th/95th percentile, throughput, error %
-Report: PerformanceReport.html
-Analysis: PerformanceAnalysis.docx (bottlenecks, recommendations)
-
-Database Validation with MySQL
-
-DBUtils.java for JDBC connectivity
-Integrated in 3 scenarios:
-Login: Verify user exists in DB
-Add to Cart: Check product inventory updated
-Checkout: Validate order details in DB
-
-Data-driven from MySQL Users table
-
-Bug Report
-See docs/BugReport.docx for 5 documented bugs (e.g., empty login allowed, cart total -cart item).
-Test Summary Report
-See docs/TestSummaryReport.docx for stats:
-
+# Start Jenkins
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
