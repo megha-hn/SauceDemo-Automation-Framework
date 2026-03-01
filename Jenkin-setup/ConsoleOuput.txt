@@ -1,0 +1,248 @@
+Started by user meghana hn
+Running as SYSTEM
+Building in workspace C:\ProgramData\Jenkins\.jenkins\workspace\SauceDemo-Freestyle-CI-CD
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\SauceDemo-Freestyle-CI-CD\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/megha-hn/SauceDemo-Automation-Framework.git # timeout=10
+Fetching upstream changes from https://github.com/megha-hn/SauceDemo-Automation-Framework.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/megha-hn/SauceDemo-Automation-Framework.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 4156673675548166984b70e63eacaa36e4c3fa1d (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 4156673675548166984b70e63eacaa36e4c3fa1d # timeout=10
+Commit message: "Add files via upload"
+ > git.exe rev-list --no-walk 4156673675548166984b70e63eacaa36e4c3fa1d # timeout=10
+[SauceDemo-Freestyle-CI-CD] $ cmd.exe /C "C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven3\bin\mvn.cmd -f pom.xml clean test -DsuiteXmlFile=testng.xml && exit %%ERRORLEVEL%%"
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/Jenkins/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven3/lib/jansi-2.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/Jenkins/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven3/lib/guava-32.0.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< com.saucedemo:SauceDemo-Automation-Framework >------------
+[INFO] Building SauceDemo-Automation-Framework 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for org.seleniumhq.selenium:selenium-devtools-v119:jar:4.16.0 is missing, no dependency information available
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ SauceDemo-Automation-Framework ---
+[INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\SauceDemo-Freestyle-CI-CD\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ SauceDemo-Automation-Framework ---
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\SauceDemo-Freestyle-CI-CD\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ SauceDemo-Automation-Framework ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 11 source files with javac [debug target 15] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 15
+  not setting the location of system modules may lead to class files that cannot run on JDK 15
+    --release 15 is recommended instead of -source 15 -target 15 because it sets the location of system modules automatically
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ SauceDemo-Automation-Framework ---
+[INFO] Copying 3 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ SauceDemo-Automation-Framework ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 6 source files with javac [debug target 15] to target\test-classes
+[WARNING] location of system modules is not set in conjunction with -source 15
+  not setting the location of system modules may lead to class files that cannot run on JDK 15
+    --release 15 is recommended instead of -source 15 -target 15 because it sets the location of system modules automatically
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ SauceDemo-Automation-Framework ---
+[INFO] Using auto detected provider org.apache.maven.surefire.testng.TestNGProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running TestSuite
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+Mar 01, 2026 12:07:58 PM io.opentelemetry.api.GlobalOpenTelemetry maybeAutoConfigureAndSetGlobal
+INFO: AutoConfiguredOpenTelemetrySdk found on classpath but automatic configuration is disabled. To enable, run your JVM with -Dotel.java.global-autoconfigure.enabled=true
+Database connected for validation
+Mar 01, 2026 12:08:03 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:03 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+Config.properties loaded successfully
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:05 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:05 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:08 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:08 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Excel data loaded from sheet 'LoginData' → 5 valid data rows
+Mar 01, 2026 12:08:13 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:13 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== Executing Test Case: Valid_Login ===
+LoginPage initialized with Page Factory
+Step: Entered username -> standard_user
+Step: Entered password
+Step: Clicked Login button
+VALID LOGIN + SESSION VALIDATION PASSED for user: standard_user
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:17 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:17 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== Executing Test Case: Invalid_Creds ===
+LoginPage initialized with Page Factory
+Step: Entered username -> wrong_user
+Step: Entered password
+Step: Clicked Login button
+Wait completed - element is visible
+Step: Error message captured -> Epic sadface: Username and password do not match any user in this service
+INVALID/LOCKED USER SCENARIO HANDLED CORRECTLY
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:20 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:20 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== Executing Test Case: Locked_User ===
+LoginPage initialized with Page Factory
+Step: Entered username -> locked_out_user
+Step: Entered password
+Step: Clicked Login button
+Wait completed - element is visible
+Step: Error message captured -> Epic sadface: Sorry, this user has been locked out.
+INVALID/LOCKED USER SCENARIO HANDLED CORRECTLY
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:22 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:22 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== Executing Test Case: Empty_Username ===
+LoginPage initialized with Page Factory
+Step: Entered username -> 
+Step: Entered password
+Step: Clicked Login button
+Wait completed - element is visible
+Step: Error message captured -> Epic sadface: Username is required
+INVALID/LOCKED USER SCENARIO HANDLED CORRECTLY
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Mar 01, 2026 12:08:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== Executing Test Case: Empty_Password ===
+LoginPage initialized with Page Factory
+Step: Entered username -> standard_user
+Step: Entered password
+Step: Clicked Login button
+Wait completed - element is visible
+Step: Error message captured -> Epic sadface: Password is required
+INVALID/LOCKED USER SCENARIO HANDLED CORRECTLY
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Database connection closed
+Database connected for validation
+Mar 01, 2026 12:08:28 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 01, 2026 12:08:28 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.31. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ChromeDriver initialized (Incognito mode) in thread: main
+===== TEST SETUP COMPLETE - Browser: chrome | Thread: main | URL: https://www.saucedemo.com =====
+=== STARTING FULL E-COMMERCE WORKFLOW WITH DB VALIDATION ===
+LoginPage initialized with Page Factory
+Step: Entered username -> standard_user
+Step: Entered password
+Step: Clicked Login button
+Step: Valid login completed
+DB Validation: User 'standard_user' exists in DB
+ProductsPage initialized
+Wait completed - element is visible
+Step: Products page displayed -> true
+Wait completed - element is clickable
+Step: Sorted products by -> Name (A to Z)
+Wait completed - element is clickable
+Step: Sorted products by -> Price (low to high)
+Wait completed - element is clickable
+Step: Added to cart -> Sauce Labs Backpack
+Wait completed - element is clickable
+Step: Added to cart -> Sauce Labs Bike Light
+Wait completed - element is clickable
+Step: Added to cart -> Sauce Labs Fleece Jacket
+Wait completed - element is visible
+Step: Cart badge visible, count = 3
+Step: 3 products added & cart count verified
+DB Validation: product 'Sauce Labs Backpack' has quantity 10 and is available
+Step: Navigated to Cart via header
+Wait completed - element is clickable
+Step: Removed from cart -> Sauce Labs Bike Light
+Wait completed - element is visible
+Step: Cart badge visible, count = 2
+Step: Item removed & cart count verified
+Wait completed - element is clickable
+Step: Clicked Continue Shopping
+Step: Navigated to Cart via header
+Wait completed - element is clickable
+Step: Clicked Checkout button
+Step: Filled shipping info -> John Doe 560001
+Wait completed - element is clickable
+Step: Clicked Continue (to overview)
+Wait completed - element is clickable
+Step: Clicked Finish purchase
+Wait completed - element is visible
+Step: Order confirmation message -> Thank you for your order!
+Step: End-to-end purchase flow completed & validated
+DB Validation: order exists - ID: 1, Total: 49.99, Status: Completed
+=== E-COMMERCE WORKFLOW TEST + DB VALIDATION PASSED SUCCESSFULLY ===
+Driver quit successfully in thread: main
+===== TEST TEARDOWN COMPLETE - Thread: main =====
+Database connection closed
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.34 s -- in TestSuite
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  46.716 s
+[INFO] Finished at: 2026-03-01T12:08:36+05:30
+[INFO] ------------------------------------------------------------------------
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at PROJECT level C:\ProgramData\Jenkins\.jenkins\workspace\SauceDemo-Freestyle-CI-CD\target\extent-reports to Extent_20Test_20Report
+[htmlpublisher] Copying recursive using current thread
+Finished: SUCCESS
